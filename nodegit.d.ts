@@ -258,8 +258,8 @@ declare namespace NodeGit {
         remoteCbPayload?: void;
     }
     
-    export interface History extends NodeJS.EventEmitter {
-        start: () => void;
+    export interface EventEmitter extends NodeJS.EventEmitter {
+        start(): void;
     }
 
     export class Commit {
@@ -293,7 +293,7 @@ declare namespace NodeGit {
         date(): Date;
         getTree(): Promise<NodeGit.Tree>;
         getEntry(path: string): Promise<NodeGit.TreeEntry>;
-        history(): History;
+        history(): EventEmitter;
         getParents(limit: number, callback: Function): Promise<NodeGit.Commit[]>;
         parents(callback: Function): Oid[];
         getDiff(callback: Function): Promise<NodeGit.Diff[]>;
